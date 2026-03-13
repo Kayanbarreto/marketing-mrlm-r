@@ -8,33 +8,41 @@ dir.create("tables", recursive = TRUE, showWarnings = FALSE)
 
 dados <- carregar_dados_tratados()
 
-# AJUSTE AQUI O NOME DA VARIÁVEL RESPOSTA
-variavel_resposta <- "receita"
-
-if (!(variavel_resposta %in% names(dados))) {
-  stop(paste(
-    "A variável resposta", variavel_resposta,
-    "não foi encontrada. Verifique os nomes das colunas."
-  ))
-}
+variavel_resposta <- "receita_mil"
 
 dados_modelo <- dados |>
-  select(where(function(x) is.numeric(x) || is.factor(x) || is.character(x)))
-
-dados_modelo[[variavel_resposta]] <- dados[[variavel_resposta]]
+  select(
+    receita_mil,
+    invest_digital,
+    invest_tradicional,
+    num_promotores,
+    taxa_conversao,
+    impressoes_mil,
+    num_cliques_mil,
+    duracao_dias
+  )
 
 dados_modelo <- remover_nas_modelo(dados_modelo)
 
-preditoras <- setdiff(names(dados_modelo), variavel_resposta)
-formula_modelo <- as.formula(
-  paste(variavel_resposta, "~", paste(preditoras, collapse = " + "))
-)
+formula_modelo <- receita_mil ~
+  invest_digital +
+  invest_tradicional +
+  num_promotores +
+  taxa_conversao +
+  impressoes_mil +
+  num_cliques_mil +
+  duracao_dias
 
 modelo_inicial <- lm(formula_modelo, data = dados_modelo)
 
 print(summary(modelo_inicial))
 
-saveRDS(modelo_inicial, "outputs/modelo_inicial.rds")
-write.csv(tidy(modelo_inicial), "tables/coeficientes_modelo_inicial.csv", row.names = FALSE)
+saveRDS(modelo_inicial, "outputs/modelo_selecionado.rds")
 
-cat("Modelo inicial ajustado e salvo.\n")
+write.csv(
+  tidy(modelo_inicial),
+  "tables/04_coeficientes_modelo.csv",
+  row.names = FALSE
+)
+
+cat("✔ Etapa 04 concluída\n")

@@ -1,7 +1,11 @@
 library(dplyr)
 
+source("scripts/99_funcoes_auxiliares.R")
+
 dir.create("outputs", recursive = TRUE, showWarnings = FALSE)
 dir.create("tables", recursive = TRUE, showWarnings = FALSE)
+
+cat("Iniciando etapa 06\n")
 
 modelo <- readRDS("outputs/modelo_selecionado.rds")
 
@@ -12,8 +16,17 @@ novo2 <- dados_modelo[2, , drop = FALSE]
 
 novos_dados <- bind_rows(novo1, novo2)
 
-previsao_media <- predict(modelo, newdata = novos_dados, interval = "confidence")
-previsao_individual <- predict(modelo, newdata = novos_dados, interval = "prediction")
+previsao_media <- predict(
+  modelo,
+  newdata = novos_dados,
+  interval = "confidence"
+)
+
+previsao_individual <- predict(
+  modelo,
+  newdata = novos_dados,
+  interval = "prediction"
+)
 
 resultado_previsoes <- cbind(
   cenario = c("cenario_1", "cenario_2"),
@@ -22,6 +35,14 @@ resultado_previsoes <- cbind(
   pred_upr = previsao_individual[, "upr"]
 )
 
-write.csv(resultado_previsoes, "tables/previsoes_intervalos.csv", row.names = FALSE)
+salvar_tabela_csv(
+  resultado_previsoes,
+  "tables/06_previsoes_intervalos_modelo_final.csv"
+)
 
-cat("Previsões e intervalos salvos.\n")
+saveRDS(
+  resultado_previsoes,
+  "outputs/06_previsoes_intervalos_modelo_final.rds"
+)
+
+cat("✔ Etapa 06 concluída\n")
