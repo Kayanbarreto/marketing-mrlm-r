@@ -1,0 +1,8 @@
+"","      id"," receita_mil","invest_digital","invest_tradicional","num_promotores","taxa_conversao","impressoes_mil","     cpc","num_cliques_mil"," duracao_dias","   canal","sazonalidade"
+"","Min.   :  1.00  ","Min.   : 53.3  ","Min.   : 2.00  ","Min.   : 0.000  ","Min.   :0.000  ","Min.   :0.340  ","Min.   :  49.8  ","Min.   :1.850  ","Min.   : 0.50  ","Min.   : 8.00  ","Length:200        ","Length:200        "
+"","1st Qu.: 50.75  ","1st Qu.:130.4  ","1st Qu.:17.33  ","1st Qu.: 5.145  ","1st Qu.:1.000  ","1st Qu.:2.020  ","1st Qu.: 370.8  ","1st Qu.:2.650  ","1st Qu.:21.73  ","1st Qu.:19.00  ","Class :character  ","Class :character  "
+"","Median :100.50  ","Median :164.4  ","Median :25.19  ","Median : 8.415  ","Median :3.000  ","Median :2.530  ","Median : 507.8  ","Median :2.955  ","Median :29.20  ","Median :33.00  ","Mode  :character  ","Mode  :character  "
+"","Mean   :100.50  ","Mean   :162.6  ","Mean   :25.29  ","Mean   : 8.340  ","Mean   :2.848  ","Mean   :2.524  ","Mean   : 509.6  ","Mean   :2.978  ","Mean   :29.75  ","Mean   :33.66  ",NA,NA
+"","3rd Qu.:150.25  ","3rd Qu.:193.0  ","3rd Qu.:32.47  ","3rd Qu.:11.312  ","3rd Qu.:4.000  ","3rd Qu.:3.020  ","3rd Qu.: 646.6  ","3rd Qu.:3.290  ","3rd Qu.:38.92  ","3rd Qu.:48.00  ",NA,NA
+"","Max.   :200.00  ","Max.   :273.8  ","Max.   :50.94  ","Max.   :20.300  ","Max.   :7.000  ","Max.   :4.610  ","Max.   :1006.9  ","Max.   :4.370  ","Max.   :64.30  ","Max.   :60.00  ",NA,NA
+"",NA,NA,NA,"NA's   :4  ","NA's   :3  ","NA's   :3  ",NA,NA,NA,NA,NA,NA
