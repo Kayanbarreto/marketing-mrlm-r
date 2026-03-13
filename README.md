@@ -74,7 +74,7 @@ O objetivo deste projeto é investigar quais fatores influenciam a **receita men
 │   ├── 02_analise_exploratoria.R
 │   ├── 03_modelo_inicial.R
 │   ├── 04_selecao_modelo.R
-│   ├── 05_pressupostos.R
+│   ├── 05_diagnostico_modelo.R
 │   ├── 06_previsoes_intervalos.R
 │   └── 99_funcoes_auxiliares.R
 │
@@ -90,6 +90,8 @@ O objetivo deste projeto é investigar quais fatores influenciam a **receita men
 ├── report/
 │   ├── relatorio.tex
 │   └── relatorio.qmd
+│
+├── run_pipeline.R
 │
 ├── .gitignore
 └── README.md
@@ -155,7 +157,12 @@ install.packages(c(
 ))
 
 # 🚀 Como Rodar o Projeto (Ordem Recomendada)
-## ✅ 1) Importação e limpeza dos dados
+## ✅ 1) Rodar tudo de uma vez (recomendado)
+`Rscript run_pipeline.R`
+
+Esse arquivo executa todos os scripts principais em sequência, do `01` ao `06`, garantindo o fluxo completo da análise em uma única execução.
+
+## ✅ 2) Importação e limpeza dos dados
 ````bash
 Rscript scripts/01_importacao_limpeza.R
 `````
@@ -169,7 +176,7 @@ Esse script:
 
 - salva os dados `tratados em data/processed/`.
 
-## ✅ 2) Análise exploratória
+## ✅ 3) Análise exploratória
 `Rscript scripts/02_analise_exploratoria.R`
 
 Esse script:
@@ -182,7 +189,7 @@ Esse script:
 
 salva tabelas e gráficos iniciais.
 
-## ✅ 3) Ajuste do modelo inicial
+## ✅ 4) Ajuste do modelo inicial
 `Rscript scripts/03_modelo_inicial.R`
 
 Esse script:
@@ -195,7 +202,7 @@ Esse script:
 
 ⚠️ Observação: esse script pode exigir ajuste no nome da variável resposta, dependendo do nome real da coluna na planilha.
 
-## ✅ 4) Seleção do melhor modelo
+## ✅ 5) Seleção do melhor modelo
 `Rscript scripts/04_selecao_modelo.R`
 
 Esse script:
@@ -206,8 +213,8 @@ Esse script:
 
 - salva o modelo selecionado.
 
-## ✅ 5) Verificação dos pressupostos
-`Rscript scripts/05_pressupostos.R`
+## ✅ 6) Verificação dos pressupostos
+`Rscript scripts/05_diagnostico_modelo.R`
 
 Esse script verifica:
 
@@ -221,7 +228,7 @@ Esse script verifica:
 
 observações influentes.
 
-## ✅ 6) Previsões e intervalos
+## ✅ 7) Previsões e intervalos
 `Rscript scripts/06_previsoes_intervalos.R`
 
 Esse script:
@@ -271,7 +278,7 @@ Responsável por:
 
 - salvar resultados.
 
-##`05_pressupostos.R`
+##`05_diagnostico_modelo.R`
 
 Responsável por:
 
@@ -370,13 +377,18 @@ A estrutura prevista do relatório inclui:
 ```
 ## 3) Verificar se a base está em data/raw/
 `data/raw/03_Cenario 03 - Marketing - Disponibilizar.xlsx`
-## 4) Executar os scripts na ordem
+## 4) Rodar tudo de uma vez (recomendado)
+```bash
+Rscript run_pipeline.R
+```
+
+## 5) Executar os scripts na ordem
 ```bash
 Rscript scripts/01_importacao_limpeza.R
 Rscript scripts/02_analise_exploratoria.R
 Rscript scripts/03_modelo_inicial.R
 Rscript scripts/04_selecao_modelo.R
-Rscript scripts/05_pressupostos.R
+Rscript scripts/05_diagnostico_modelo.R
 Rscript scripts/06_previsoes_intervalos.R
 ```
 # ⚠️ Observações Importantes
