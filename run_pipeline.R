@@ -1,4 +1,5 @@
-pacotes <- c("dplyr","readxl","janitor","broom","car","lmtest","ggplot2","GGally","reshape2")
+# Adiciona todos os pacotes necessários
+pacotes <- c("dplyr", "readxl", "janitor", "broom", "car", "lmtest", "ggplot2", "GGally", "reshape2")
 
 # Define um mirror padrão do CRAN
 options(repos = c(CRAN = "https://cloud.r-project.org"))
