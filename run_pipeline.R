@@ -1,13 +1,4 @@
-pacotes <- c("dplyr","readxl","janitor","broom","car","lmtest","ggplot2","GGally","reshape2")
-
-# Define um mirror padrão do CRAN
-options(repos = c(CRAN = "https://cloud.r-project.org"))
-
-instalar <- pacotes[!(pacotes %in% installed.packages()[,"Package"])]
-
-if(length(instalar)) install.packages(instalar)
-
-lapply(pacotes, library, character.only = TRUE)
+source("requirements.R")
 
 cat("=====================================\n")
 cat("Pipeline do Projeto de Estatística\n")
