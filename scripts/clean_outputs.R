@@ -1,13 +1,25 @@
 cat("Limpando arquivos gerados...\n")
 
-unlink("data/processed", recursive = TRUE)
-unlink("figures", recursive = TRUE)
-unlink("tables", recursive = TRUE)
-unlink("outputs", recursive = TRUE)
+args <- commandArgs(trailingOnly = FALSE)
+file_arg <- grep("^--file=", args, value = TRUE)
 
-dir.create("data/processed", recursive = TRUE, showWarnings = FALSE)
-dir.create("figures", recursive = TRUE, showWarnings = FALSE)
-dir.create("tables", recursive = TRUE, showWarnings = FALSE)
-dir.create("outputs", recursive = TRUE, showWarnings = FALSE)
+if (length(file_arg) > 0) {
+	script_path <- normalizePath(sub("^--file=", "", file_arg), winslash = "/", mustWork = FALSE)
+	project_root <- normalizePath(file.path(dirname(script_path), ".."), winslash = "/", mustWork = FALSE)
+} else {
+	project_root <- if (basename(getwd()) == "scripts") normalizePath("..", winslash = "/", mustWork = FALSE) else normalizePath(".", winslash = "/", mustWork = FALSE)
+}
+
+path_in_root <- function(...) file.path(project_root, ...)
+
+unlink(path_in_root("data", "processed"), recursive = TRUE, force = TRUE)
+unlink(path_in_root("figures"), recursive = TRUE, force = TRUE)
+unlink(path_in_root("tables"), recursive = TRUE, force = TRUE)
+unlink(path_in_root("outputs"), recursive = TRUE, force = TRUE)
+
+dir.create(path_in_root("data", "processed"), recursive = TRUE, showWarnings = FALSE)
+dir.create(path_in_root("figures"), recursive = TRUE, showWarnings = FALSE)
+dir.create(path_in_root("tables"), recursive = TRUE, showWarnings = FALSE)
+dir.create(path_in_root("outputs"), recursive = TRUE, showWarnings = FALSE)
 
 cat("✔ Limpeza concluída\n")

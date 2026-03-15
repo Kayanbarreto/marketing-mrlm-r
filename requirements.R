@@ -6,7 +6,6 @@ pacotes <- c(
   "car",
   "lmtest",
   "ggplot2",
-  "GGally",
   "reshape2",
   "MASS"
 )
