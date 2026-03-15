@@ -14,3 +14,9 @@
 .venv/
 __pycache__/
 .DS_Store
+
+# Artefatos gerados pelo pipeline
+data/processed/
+figures/
+tables/
+outputs/
