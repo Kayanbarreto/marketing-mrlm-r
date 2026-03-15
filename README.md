@@ -35,26 +35,8 @@ O objetivo deste projeto é investigar quais fatores influenciam a **receita men
 
 ---
 
-# 🛠 Tecnologias Utilizadas
-
 ## 📈 Linguagem e análise estatística
 - R
-
-## 📦 Pacotes principais
-- readxl
-- dplyr
-- janitor
-- ggplot2
-- broom
-- MASS
-- car
-- lmtest
-- GGally
-- reshape2
-
-## 🧰 Ferramentas de desenvolvimento
-- Git
-- GitHub
 
 ---
 
@@ -250,7 +232,7 @@ Esse script:
 - calcula intervalos de predição.
 
 # 📜 Scripts do Projeto
-##`01_importacao_limpeza.R`
+`01_importacao_limpeza.R`
 
 Responsável por:
 
@@ -262,7 +244,7 @@ Responsável por:
 
 - salvar arquivos tratados.
 
-##`02_analise_exploratoria.R`
+`02_analise_exploratoria.R`
 
 Responsável por:
 
@@ -272,13 +254,13 @@ Responsável por:
 
 - construir gráficos exploratórios.
 
-##`03_modelo_inicial.R`
+`03_modelo_inicial.R`
 
 Responsável por:
 
 - ajustar o modelo inicial de regressão linear múltipla.
 
-##`04_selecao_modelo.R`
+`04_selecao_modelo.R`
 
 Responsável por:
 
@@ -288,7 +270,7 @@ Responsável por:
 
 - salvar resultados.
 
-##`05_diagnostico_modelo.R`
+`05_diagnostico_modelo.R`
 
 Responsável por:
 
@@ -296,7 +278,7 @@ Responsável por:
 
 - testar pressupostos da regressão.
 
-##`06_previsoes_intervalos.R`
+`06_previsoes_intervalos.R`
 
 Responsável por:
 
@@ -304,7 +286,7 @@ Responsável por:
 
 - calcular intervalos estatísticos.
 
-##`99_funcoes_auxiliares.R`
+`99_funcoes_auxiliares.R`
 
 Responsável por:
 
