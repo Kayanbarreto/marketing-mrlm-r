@@ -1,0 +1,239 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{setspace}
+
+\geometry{margin=2.5cm}
+
+\title{
+Relatório Final de Regressão Linear Múltipla \\
+Projeto de Estatística – Campanhas de Marketing
+}
+
+\author{
+Kayan Marques Barreto \\
+Pedro Felipe Alves Bezerra \\
+Levi Queiroz de Assunção
+}
+
+\date{
+Universidade Federal de Campina Grande \\
+Unidade Acadêmica de Estatística \\
+Disciplina: Estatística Aplicada \\
+2026
+}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introdução}
+
+Este relatório apresenta uma análise de regressão linear múltipla aplicada a um
+conjunto de dados de campanhas de marketing.
+
+O objetivo principal é identificar quais fatores estão mais associados ao
+desempenho financeiro das campanhas.
+
+A variável resposta analisada é:
+
+\begin{itemize}
+\item receita\_mil
+\end{itemize}
+
+As variáveis explicativas consideradas foram:
+
+\begin{itemize}
+\item impressoes\_mil
+\item invest\_digital
+\item invest\_tradicional
+\item num\_cliques\_mil
+\item num\_promotores
+\item taxa\_conversao
+\item duracao\_dias
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Descrição da Base de Dados}
+
+A base de dados contém informações sobre campanhas de marketing
+e suas características operacionais.
+
+O conjunto de dados possui aproximadamente 200 observações
+e inclui variáveis relacionadas a investimento, engajamento
+e duração das campanhas.
+
+Durante o processo de preparação dos dados foram identificados
+valores ausentes em algumas variáveis explicativas.
+Esses registros foram tratados antes da modelagem
+utilizando remoção de observações com dados incompletos.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Análise Exploratória dos Dados}
+
+A análise exploratória tem como objetivo compreender
+a distribuição das variáveis e identificar possíveis
+padrões ou anomalias nos dados.
+
+\subsection{Distribuição da variável resposta}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/hist_resposta.png}
+\caption{Distribuição da variável receita\_mil}
+\end{figure}
+
+\subsection{Boxplot da receita por número de promotores}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/boxplot_receita_promotores.png}
+\caption{Distribuição da receita por número de promotores}
+\end{figure}
+
+\subsection{Matriz de correlação}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/correlation_heatmap.png}
+\caption{Matriz de correlação entre variáveis numéricas}
+\end{figure}
+
+A matriz de correlação permite identificar possíveis relações
+lineares entre as variáveis explicativas e a variável resposta,
+além de indicar possíveis problemas de multicolinearidade.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Modelo Inicial de Regressão Linear}
+
+O modelo inicial ajustado foi:
+
+\[
+receita\_mil =
+\beta_0 +
+\beta_1 invest\_digital +
+\beta_2 invest\_tradicional +
+\beta_3 impressoes\_mil +
+\beta_4 num\_cliques\_mil +
+\beta_5 taxa\_conversao +
+\beta_6 num\_promotores +
+\beta_7 duracao\_dias + \varepsilon
+\]
+
+\subsection{Coeficientes estimados}
+
+\begin{table}[H]
+\centering
+\caption{Coeficientes estimados do modelo}
+\input{tables_latex/tabela_coeficientes.tex}
+\end{table}
+
+Os coeficientes estimados indicam a variação esperada
+na variável resposta para uma unidade adicional de cada
+variável explicativa, mantendo as demais constantes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Diagnóstico do Modelo}
+
+Após o ajuste do modelo, foram realizadas análises
+de diagnóstico para verificar se os pressupostos
+da regressão linear múltipla são atendidos.
+
+\subsection{Resíduos versus valores ajustados}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/residuos_vs_ajustados.png}
+\caption{Resíduos versus valores ajustados}
+\end{figure}
+
+Esse gráfico permite avaliar a presença de padrões
+que possam indicar problemas de especificação do modelo.
+
+\subsection{Normalidade dos resíduos}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/qqplot_residuos.png}
+\caption{Gráfico Q-Q dos resíduos}
+\end{figure}
+
+A proximidade dos pontos à linha de referência sugere
+que a hipótese de normalidade dos resíduos é razoável.
+
+\subsection{Testes formais de pressupostos}
+
+\begin{table}[H]
+\centering
+\caption{Resultados dos testes de pressupostos}
+\input{tables_latex/tabela_pressupostos.tex}
+\end{table}
+
+\subsection{Diagnóstico de multicolinearidade}
+
+\begin{table}[H]
+\centering
+\caption{Valores do fator de inflação da variância (VIF)}
+\input{tables_latex/tabela_vif.tex}
+\end{table}
+
+Valores elevados de VIF podem indicar problemas
+de multicolinearidade entre as variáveis explicativas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Observações Influentes}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/cooks_distance.png}
+\caption{Cook's Distance}
+\end{figure}
+
+A análise da distância de Cook permite identificar
+observações potencialmente influentes no ajuste do modelo.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Previsões e Intervalos}
+
+Foram considerados dois cenários de valores para as
+variáveis explicativas com o objetivo de ilustrar
+a capacidade de previsão do modelo ajustado.
+
+\begin{table}[H]
+\centering
+\caption{Previsões pontuais e intervalos}
+\input{tables_latex/tabela_previsoes.tex}
+\end{table}
+
+São apresentados intervalos de confiança para a média
+esperada da variável resposta e intervalos de predição
+para novas observações.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusão}
+
+A análise realizada permitiu identificar fatores associados
+ao desempenho financeiro das campanhas de marketing.
+
+Os resultados indicam que variáveis relacionadas ao
+investimento e ao engajamento digital apresentam maior
+associação com a receita obtida pelas campanhas.
+
+Os diagnósticos sugerem que os pressupostos do modelo
+de regressão linear múltipla são razoavelmente atendidos,
+o que permite utilizar o modelo tanto para interpretação
+quanto para previsão.
+
+\end{document}

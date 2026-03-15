@@ -49,6 +49,8 @@ O objetivo deste projeto é investigar quais fatores influenciam a **receita men
 - MASS
 - car
 - lmtest
+- GGally
+- reshape2
 
 ## 🧰 Ferramentas de desenvolvimento
 - Git
@@ -64,7 +66,7 @@ O objetivo deste projeto é investigar quais fatores influenciam a **receita men
 .
 ├── data/
 │   ├── raw/
-│   │   └── 03_Cenario 03 - Marketing - Disponibilizar.xlsx
+│   │   └── marketing.xlsx
 │   └── processed/
 │       ├── dados_tratados_inicial.csv
 │       └── dados_tratados_inicial.rds
@@ -76,6 +78,7 @@ O objetivo deste projeto é investigar quais fatores influenciam a **receita men
 │   ├── 04_selecao_modelo.R
 │   ├── 05_diagnostico_modelo.R
 │   ├── 06_previsoes_intervalos.R
+│   ├── 07_graficos.R
 │   └── 99_funcoes_auxiliares.R
 │
 ├── figures/
@@ -90,6 +93,8 @@ O objetivo deste projeto é investigar quais fatores influenciam a **receita men
 ├── report/
 │   ├── relatorio.tex
 │   └── relatorio.qmd
+│
+├── requirements.R
 │
 ├── run_pipeline.R
 │
@@ -130,37 +135,42 @@ Contém os arquivos do relatório final do projeto.
 Antes de executar o projeto, é recomendado ter instalado:
 
 - R
+- dependências de sistema para compilação de pacotes no WSL/Ubuntu
 
 
 # ⚙️ Configuração Inicial
 ## 1) Clonar o repositório
 git clone `https://github.com/SEU-USUARIO/marketing-mrlm-r.git`
 `cd marketing-mrlm-r`
-## 2) Garantir que a base esteja no caminho correto
+## 2) Instalar dependências de sistema no WSL/Ubuntu
+
+No terminal, execute:
+
+```bash
+sudo apt update && sudo apt install -y r-base cmake build-essential gfortran libnlopt-dev libcurl4-openssl-dev libssl-dev libxml2-dev
+```
+
+## 3) Instalar as dependências do projeto em R
+
+Execute:
+
+```bash
+Rscript requirements.R
+```
+
+O arquivo `requirements.R` instala automaticamente os pacotes necessários para rodar o pipeline do projeto.
+
+## 4) Garantir que a base esteja no caminho correto
 
 A planilha utilizada no projeto deve estar em:
 
-`data/raw/03_Cenario 03 - Marketing - Disponibilizar.xlsx`
-## 3) Instalar os pacotes necessários no R
-
-No console do R, execute:
-
-install.packages(c(
-  "readxl",
-  "dplyr",
-  "janitor",
-  "ggplot2",
-  "broom",
-  "MASS",
-  "car",
-  "lmtest"
-))
+`data/raw/marketing.xlsx`
 
 # 🚀 Como Rodar o Projeto (Ordem Recomendada)
 ## ✅ 1) Rodar tudo de uma vez (recomendado)
 `Rscript run_pipeline.R`
 
-Esse arquivo executa todos os scripts principais em sequência, do `01` ao `06`, garantindo o fluxo completo da análise em uma única execução.
+Esse arquivo executa todos os scripts principais em sequência, do `01` ao `07`, garantindo o fluxo completo da análise em uma única execução.
 
 ## ✅ 2) Importação e limpeza dos dados
 ````bash
@@ -363,26 +373,26 @@ A estrutura prevista do relatório inclui:
 ## 1) Clonar o repositório
 `git clone https://github.com/SEU-USUARIO/marketing-mrlm-r.git`
 `cd marketing-mrlm-r`
-## 2) Instalar os pacotes do R
-```bashinstall.packages(c(
-  "readxl",
-  "dplyr",
-  "janitor",
-  "ggplot2",
-  "broom",
-  "MASS",
-  "car",
-  "lmtest"
-))
+## 2) Instalar dependências de sistema no WSL/Ubuntu
+
+```bash
+sudo apt update && sudo apt install -y r-base cmake build-essential gfortran libnlopt-dev libcurl4-openssl-dev libssl-dev libxml2-dev
 ```
-## 3) Verificar se a base está em data/raw/
-`data/raw/03_Cenario 03 - Marketing - Disponibilizar.xlsx`
-## 4) Rodar tudo de uma vez (recomendado)
+
+## 3) Instalar as dependências do projeto
+
+```bash
+Rscript requirements.R
+```
+
+## 4) Verificar se a base está em data/raw/
+`data/raw/marketing.xlsx`
+## 5) Rodar tudo de uma vez (recomendado)
 ```bash
 Rscript run_pipeline.R
 ```
 
-## 5) Executar os scripts na ordem
+## 6) Executar os scripts na ordem
 ```bash
 Rscript scripts/01_importacao_limpeza.R
 Rscript scripts/02_analise_exploratoria.R
