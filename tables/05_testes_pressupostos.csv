@@ -1,3 +1,4 @@
 "metrica","valor"
 "Breusch-Pagan p-valor",0.944566567155816
 "Durbin-Watson p-valor",0.836368856016464
+"Shapiro-Wilk p-valor",0.455091694982495

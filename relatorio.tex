@@ -132,13 +132,16 @@ receita\_mil =
 \beta_7 duracao\_dias + \varepsilon
 \]
 
-\subsection{Coeficientes estimados}
+\subsection{Coeficientes estimados do modelo final selecionado}
 
 \begin{table}[H]
 \centering
-\caption{Coeficientes estimados do modelo}
+\caption{Coeficientes estimados do modelo final selecionado}
 \input{tables_latex/tabela_coeficientes.tex}
 \end{table}
+
+A Tabela apresenta os coeficientes do \textbf{modelo final selecionado}
+na etapa de seleção de variáveis (não do modelo inicial completo).
 
 Os coeficientes estimados indicam a variação esperada
 na variável resposta para uma unidade adicional de cada
@@ -181,6 +184,10 @@ que a hipótese de normalidade dos resíduos é razoável.
 \input{tables_latex/tabela_pressupostos.tex}
 \end{table}
 
+Além dos testes de heterocedasticidade e independência,
+foi incluído o teste de Shapiro-Wilk para avaliação formal
+da normalidade dos resíduos.
+
 \subsection{Diagnóstico de multicolinearidade}
 
 \begin{table}[H]
@@ -213,7 +220,16 @@ a capacidade de previsão do modelo ajustado.
 
 \begin{table}[H]
 \centering
-\caption{Previsões pontuais e intervalos}
+\caption{Tabela 6 -- Cenários de previsão com valores de entrada de $x_1$ e $x_2$}
+\input{tables_latex/tabela_cenarios_previsao.tex}
+\end{table}
+
+Na tabela, $x_1$ e $x_2$ representam, respectivamente,
+as duas primeiras variáveis explicativas do modelo final selecionado.
+
+\begin{table}[H]
+\centering
+\caption{Previsões pontuais e intervalos para os cenários considerados}
 \input{tables_latex/tabela_previsoes.tex}
 \end{table}
 

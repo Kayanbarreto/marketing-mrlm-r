@@ -47,6 +47,20 @@ print(
 )
 
 ##################################################
+# CENÁRIOS DE PREVISÃO (X_1 E X_2)
+##################################################
+
+cenarios <- read.csv("tables/06_cenarios_previsao_modelo_final.csv")
+
+tabela_cenarios <- xtable(cenarios)
+
+print(
+  tabela_cenarios,
+  file = "tables_latex/tabela_cenarios_previsao.tex",
+  include.rownames = FALSE
+)
+
+##################################################
 # PREVISÕES
 ##################################################
 

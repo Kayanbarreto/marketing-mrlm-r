@@ -7,11 +7,12 @@ modelo <- readRDS("outputs/modelo_selecionado.rds")
 
 teste_bp <- bptest(modelo)
 teste_dw <- dwtest(modelo)
+teste_shapiro <- shapiro.test(residuals(modelo))
 valores_vif <- vif(modelo)
 
 resultado_pressupostos <- data.frame(
-  metrica = c("Breusch-Pagan p-valor", "Durbin-Watson p-valor"),
-  valor = c(teste_bp$p.value, teste_dw$p.value)
+  metrica = c("Breusch-Pagan p-valor", "Durbin-Watson p-valor", "Shapiro-Wilk p-valor"),
+  valor = c(teste_bp$p.value, teste_dw$p.value, teste_shapiro$p.value)
 )
 
 write.csv(
